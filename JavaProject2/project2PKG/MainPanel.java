@@ -95,8 +95,7 @@ public class MainPanel extends JPanel {
 		   public void actionPerformed (ActionEvent event) {
 			  // do {
 				   try {
-					   String idStr = JOptionPane.showInputDialog("Enter a Patient ID:");
-					   ID = (idStr);
+					   ID = JOptionPane.showInputDialog("Enter a Patient ID:");
 				   } catch (Exception e) {
 					   ID = null;
 				   } 
