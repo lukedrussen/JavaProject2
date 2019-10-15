@@ -12,9 +12,9 @@ public class MainFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(400, 500);
 
-		
+
 		frame.getContentPane().add(new MainPanel());
-		
+
 		frame.pack();
 		frame.setVisible(true);
 	}

@@ -112,7 +112,21 @@ public class EditPanel extends JPanel {
 	  
 	   private class EditPanelListener implements ActionListener {
 		   public void actionPerformed (ActionEvent event) {
-				  setVisible(false);
+			   ACE1.setSelected(false);
+				  ACE2.setSelected(false);
+				  ACE3.setSelected(false);
+				  ACE4.setSelected(false);
+				  ACE5.setSelected(false);
+				  ACE6.setSelected(false);
+				  ACE7.setSelected(false);
+				  ACE8.setSelected(false);
+				  ACE9.setSelected(false);
+				  ACE10.setSelected(false);
+				  
+				  IDstring.setSelectedIndex(0);
+				  Namestring.setText("");
+			   
+			   setVisible(false);
 				  home.setVisible(true);
 		   }
 	   }

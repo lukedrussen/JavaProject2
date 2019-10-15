@@ -11,3 +11,8 @@
 /MainPanel$EditPanelListener.class
 /EditPanel$EditPanelListener.class
 /MainPanel$RemoveListener.class
+/AceDataManager.class
+/AceDataManagerADT.class
+/Patient.class
+/PatientADT.class
+/TesterClass.class
