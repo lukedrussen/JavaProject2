@@ -6,3 +6,8 @@
 /MainPanel$AddPanelListener.class
 /MainPanel.class
 /ViewPanel.class
+/EditPanel$AddPanelListener.class
+/EditPanel$SubmitListener.class
+/MainPanel$EditPanelListener.class
+/EditPanel$EditPanelListener.class
+/MainPanel$RemoveListener.class

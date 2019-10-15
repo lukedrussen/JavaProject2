@@ -7,10 +7,8 @@ import javax.swing.*;
 //import project2PKG.MainPanel.AddPanelListener;
 
 public class AddPanel extends JPanel {
-	private final int WIDTH = 800, HEIGHT = 500;   
-	private int height;
-	   private int width;
-	   private JPanel home;
+	private final int WIDTH = 400, HEIGHT = 500;   
+	private JPanel home;
 	   
 	   private JButton showControlPanel;
 	   private JButton Submit;
@@ -38,14 +36,12 @@ public class AddPanel extends JPanel {
 
 	   public AddPanel(JPanel x)
 	   {	
-		  width = WIDTH;
-		  height = HEIGHT;
 		  home = x;
 		  
-		  setVisible(true);
+		  //setVisible(false);
 		  
 		  showControlPanel = new JButton("Back");
-		  showControlPanel.setBounds(21, 5, 83, 23);
+		  showControlPanel.setBounds(10, 10, 83, 23);
 		  showControlPanel.addActionListener(new AddPanelListener());
 		  setLayout(null);
 		  add(showControlPanel);
@@ -103,7 +99,7 @@ public class AddPanel extends JPanel {
 		  add(ACE9);
 		  
 		  Submit = new JButton("Submit");
-		  Submit.setBounds(328, 466, 89, 23);
+		  Submit.setBounds(301, 467, 89, 23);
 		  Submit.addActionListener(new SubmitListener());
 		  add(Submit);
 		  add(ACE10);
