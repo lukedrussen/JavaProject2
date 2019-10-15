@@ -33,13 +33,14 @@ public class MainPanel extends JPanel {
 		   
 		   
 		   showAddPanel = new JButton("Add Patient");
+		   showAddPanel.setBounds(363, 145, 107, 23);
 		   showAddPanel.addActionListener(new AddPanelListener());
 		   
 		   
 		
 		  
 		   
-		   addpanel = new AddPanel(WIDTH,HEIGHT, controlPanel);
+		   addpanel = new AddPanel(controlPanel);
 		   
 	      
 	      
@@ -54,7 +55,8 @@ public class MainPanel extends JPanel {
 	      controlPanel.setVisible(true);
 	      
 	      add(addpanel);
-	      
+	      controlPanel.setLayout(null);
+	      //addpanel.setVisible(false);
 	      
 	      controlPanel.add(showAddPanel);
 	   }
