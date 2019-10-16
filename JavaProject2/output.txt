@@ -1,3 +1,3 @@
 Luke,123,Parental separation or divorce
 John,976,Physical abuse
-Al,100,Physical abuse,Sexual abuse,Emotional abuse
+Al,100,Physical abuse,Sexual abuse,Emotional abuse,Physical neglect,Emotional neglect,Exposure to domestic violence,Parental separation or divorce

@@ -67,40 +67,40 @@ public class EditPanel extends JPanel {
 		add(Load);
 
 		ID = new JLabel("ID:");
-		ID.setBounds(96, 80, 30, 14);
+		ID.setBounds(89, 80, 30, 14);
 		NAME = new JLabel("Name:");
-		NAME.setBounds(78, 109, 38, 14);
+		NAME.setBounds(71, 109, 38, 14);
 		ACEs = new JLabel("ACEs:");
-		ACEs.setBounds(78, 134, 38, 14);
+		ACEs.setBounds(71, 137, 38, 14);
 
 
 		IDstring = new JComboBox();
 		IDstring.setModel(new DefaultComboBoxModel(ids.toArray()));
-		IDstring.setBounds(126, 77, 171, 20);
+		IDstring.setBounds(113, 77, 184, 20);
 		Namestring = new JTextField();
-		Namestring.setBounds(126, 106, 171, 20);
+		Namestring.setBounds(113, 106, 184, 20);
 
 
-		ACE1 = new JCheckBox("ACE1");
-		ACE1.setBounds(128, 154, 77, 23);
-		ACE2 = new JCheckBox("ACE2");
-		ACE2.setBounds(128, 180, 77, 23);
-		ACE3 = new JCheckBox("ACE3");
-		ACE3.setBounds(128, 206, 77, 23);
-		ACE4 = new JCheckBox("ACE4");
-		ACE4.setBounds(128, 232, 77, 23);
-		ACE5 = new JCheckBox("ACE5");
-		ACE5.setBounds(128, 258, 77, 23);
-		ACE6 = new JCheckBox("ACE6");
-		ACE6.setBounds(128, 284, 77, 23);
-		ACE7 = new JCheckBox("ACE7");
-		ACE7.setBounds(128, 310, 77, 23);
-		ACE8 = new JCheckBox("ACE8");
-		ACE8.setBounds(128, 336, 77, 23);
-		ACE9 = new JCheckBox("ACE9");
-		ACE9.setBounds(128, 362, 77, 23);
-		ACE10 = new JCheckBox("ACE10");
-		ACE10.setBounds(128, 388, 77, 23);
+		ACE1 = new JCheckBox("Physical abuse");
+		ACE1.setBounds(113, 158, 215, 23);
+		ACE2 = new JCheckBox("Sexual abuse");
+		ACE2.setBounds(113, 184, 215, 23);
+		ACE3 = new JCheckBox("Emotional abuse");
+		ACE3.setBounds(113, 210, 215, 23);
+		ACE4 = new JCheckBox("Physical neglect");
+		ACE4.setBounds(113, 236, 215, 23);
+		ACE5 = new JCheckBox("Emotional neglect");
+		ACE5.setBounds(113, 262, 215, 23);
+		ACE6 = new JCheckBox("Exposure to domestic violence");
+		ACE6.setBounds(113, 288, 215, 23);
+		ACE7 = new JCheckBox("Household substance abuse");
+		ACE7.setBounds(113, 314, 215, 23);
+		ACE8 = new JCheckBox("Household mental illness");
+		ACE8.setBounds(113, 340, 215, 23);
+		ACE9 = new JCheckBox("Parental separation or divorce");
+		ACE9.setBounds(113, 366, 215, 23);
+		ACE10 = new JCheckBox("Incarcerated household member");
+		ACE10.setBounds(113, 392, 215, 23);
 
 
 

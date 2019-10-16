@@ -123,10 +123,10 @@ public class MainPanel extends JPanel {
 
 			ID = JOptionPane.showInputDialog("Enter a Patient ID:");
 			
-			if(!IDS.contains(ID)) {
+			if(!IDS.contains(ID) && ID != null) {
 			do {
 				ID = JOptionPane.showInputDialog("No Patient With Matching ID.\nEnter Different ID or Cancel.");
-			} while ( !IDS.contains(ID) && ID != ""); 
+			} while ( !IDS.contains(ID) && ID != null); 
 			}
 			myData.removePatient(myData.getPatient(ID));
 			
