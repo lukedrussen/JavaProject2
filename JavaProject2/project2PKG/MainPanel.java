@@ -7,6 +7,7 @@ import javax.swing.*;
 public class MainPanel extends JPanel {
 	private final int WIDTH = 400, HEIGHT = 500;
 
+	AceDataManagerADT myData;
 	
 	private JPanel controlPanel;
 	private AddPanel addpanel;
@@ -24,6 +25,8 @@ public class MainPanel extends JPanel {
 	public MainPanel()
 	{
 		super(new BorderLayout());
+		myData=new AceDataManager<PatientADT>();
+		myData.readFile("output.txt");
 		
 	
 
@@ -51,7 +54,7 @@ public class MainPanel extends JPanel {
 
 
 		addpanel = new AddPanel(controlPanel);
-		editpanel = new EditPanel(controlPanel);
+		editpanel = new EditPanel(controlPanel, myData);
 
 
 
