@@ -10,11 +10,17 @@ import java.nio.charset.Charset;
 
 public class AceDataManager<T> implements AceDataManagerADT {
 
-	private ArrayList<PatientADT> Patients = new ArrayList<PatientADT>();
-	private ArrayList<String> Risks = new ArrayList<String>();
-	private ArrayList<String> IDS = new ArrayList<String>();
+	private ArrayList<PatientADT> Patients;
+	private ArrayList<String> Risks;
+	private ArrayList<String> IDS;
 
 
+	public AceDataManager() {
+		Patients = new ArrayList<PatientADT>();
+		Risks = new ArrayList<String>();
+		IDS = new ArrayList<String>();
+	}
+	
 	public void addPatient(PatientADT p) {
 		Patients.add(p);
 	}
@@ -33,60 +39,59 @@ public class AceDataManager<T> implements AceDataManagerADT {
 
 
 	public ArrayList<String> getRiskFactors(ArrayList<String> aces) {
-		ArrayList<String> riskfactors = new ArrayList<String>();
 		if(aces.contains("Physical abuse"))
 		{
-			riskfactors.add("Potential risk of substance abuse and/or aggressive behavior from Physical abuse");
+			Risks.add("Potential risk of substance abuse and/or aggressive behavior from Physical abuse");
 		}
 		if(aces.contains("Sexual abuse"))
 		{
-			riskfactors.add("Potential risk of personality disorder, mood disorder and/or anxiety disorder from Sexual abuse");
+			Risks.add("Potential risk of personality disorder, mood disorder and/or anxiety disorder from Sexual abuse");
 		}
 		if(aces.contains("Emotional abuse"))
 		{
-			riskfactors.add("Potential risk of substance abuse, mood disorder and/or anxiety disorder from Emotional abuse");
+			Risks.add("Potential risk of substance abuse, mood disorder and/or anxiety disorder from Emotional abuse");
 		}
 		if(aces.contains("Physical neglect"))
 		{
-			riskfactors.add("Potential risk of substance abuse and/or chronic diseases from Physical neglect");
+			Risks.add("Potential risk of substance abuse and/or chronic diseases from Physical neglect");
 		}
 		if(aces.contains("Emotional neglect"))
 		{
-			riskfactors.add("Potential risk of substance abuse, mood disorder and/or anxiety disorder from Emotional neglect");
+			Risks.add("Potential risk of substance abuse, mood disorder and/or anxiety disorder from Emotional neglect");
 		}
 		if(aces.contains("Exposure to domestic violence"))
 		{
-			riskfactors.add("Potential risk of substance abuse, mood disorder, anxiety disorder, and/or aggressive behavior from Exposure to domestic violence");
+			Risks.add("Potential risk of substance abuse, mood disorder, anxiety disorder, and/or aggressive behavior from Exposure to domestic violence");
 		}
 		if(aces.contains("Household substance abuse"))
 		{
-			riskfactors.add("Potential risk of chronic diseases, substance abuse and/or mood disorder from Household substance abuse exposure");
+			Risks.add("Potential risk of chronic diseases, substance abuse and/or mood disorder from Household substance abuse exposure");
 		}
 		if(aces.contains("Household mental illness"))
 		{
-			riskfactors.add("Potential risk of mood disorder and/or chronic diseases from Household mental illness");
+			Risks.add("Potential risk of mood disorder and/or chronic diseases from Household mental illness");
 		}
 		if(aces.contains("Parental separation"))
 		{
-			riskfactors.add("Potential risk of chronic diseases, substance abuse, mood disorder and/or anxiety disorder from Parental separation");
+			Risks.add("Potential risk of chronic diseases, substance abuse, mood disorder and/or anxiety disorder from Parental separation");
 		}
 		if(aces.contains("Incarcerated household member"))
 		{
-			riskfactors.add("Potential risk of substance abuse, mood disorder, and/or chronic diseases from Incarcerated household member");
+			Risks.add("Potential risk of substance abuse, mood disorder, and/or chronic diseases from Incarcerated household member");
 		}
 		//Judges severity of symptoms based on quantity of aces
-		if(riskfactors.size() < 2)
+		if(Risks.size() < 2)
 		{
-			riskfactors.add("Low range of symptom severity. Suggest short-term individual therapy.");
-			return riskfactors;
+			Risks.add("Low range of symptom severity. Suggest short-term individual therapy.");
+			return Risks;
 		}
-		if(riskfactors.size() < 6)
+		if(Risks.size() < 6)
 		{
-			riskfactors.add("Medium range of symptom severity. Suggest treatment plan, group therapy, and individual thearpy.");
-			return riskfactors;
+			Risks.add("Medium range of symptom severity. Suggest treatment plan, group therapy, and individual thearpy.");
+			return Risks;
 		}
-		riskfactors.add("High range of symptom severity. Suggest multidisciplinary team and adminstration to medical institution for intensive care.");
-		return riskfactors;
+		Risks.add("High range of symptom severity. Suggest multidisciplinary team and adminstration to medical institution for intensive care.");
+		return Risks;
 
 	}
 
@@ -102,13 +107,16 @@ public class AceDataManager<T> implements AceDataManagerADT {
 
 	}
 	
-	public ArrayList getIDs() {
+	public ArrayList<String> getIDs() {
 		for(PatientADT s: Patients) {
 			IDS.add(s.getId());
 		}
 		return IDS;
 	}
 
+	public void removePatient(PatientADT p) {
+		Patients.remove(p);
+	}
 
 	public void writeToFile(String fn) throws IOException {
 		//Found On Stack Overflow

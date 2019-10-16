@@ -2,6 +2,9 @@ package project2PKG;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 //import project2PKG.MainPanel.AddPanelListener;
@@ -16,6 +19,13 @@ public class AddPanel extends JPanel {
 	private JLabel ID;
 	private JLabel NAME;
 	private JLabel ACEs;
+
+	private AceDataManagerADT myData;
+	private ArrayList<String> ids;
+	private PatientADT temp;
+
+	private String tempID;
+	private String tempName;
 
 	private JTextField IDstring;
 	private JTextField Namestring;
@@ -34,11 +44,13 @@ public class AddPanel extends JPanel {
 
 
 
-	public AddPanel(JPanel x)
+	public AddPanel(JPanel x, AceDataManagerADT y, ArrayList<String> z)
 	{	
 		home = x;
-
-		//setVisible(false);
+		myData = y;
+		ids = z;
+		temp = new Patient<String>();
+//		setVisible(true);
 
 		showControlPanel = new JButton("Back");
 		showControlPanel.setBounds(10, 10, 83, 23);
@@ -106,8 +118,8 @@ public class AddPanel extends JPanel {
 
 		setPreferredSize (new Dimension(WIDTH, HEIGHT));
 		setBackground (Color.LIGHT_GRAY);
-
 	}
+
 
 	private class AddPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
@@ -134,10 +146,78 @@ public class AddPanel extends JPanel {
 	private class SubmitListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 			//addPatient
+
+
+			if(Namestring.getText() == "")
+			{
+				do {
+
+					tempName = JOptionPane.showInputDialog("You did not enter a patient name. Please enter a Name.");
+					if(Namestring.getText() != "")
+						temp.setId(tempID);
+
+				} while (Namestring.getText() == ""); 
+			}else 
+				temp.setName(Namestring.getText());
+
+
+			if(ids.contains(IDstring.getText()))
+			{
+				do {
+
+					tempID = JOptionPane.showInputDialog("The ID you entered already exists. Please enter a new ID.");
+					if(!ids.contains(tempID))
+						temp.setId(tempID);
+
+				} while (ids.contains(tempID)); 
+			}
+			else 
+				temp.setId(IDstring.getText());
+
+
+			if(ACE1.isSelected())
+				temp.addACE("Physical abuse");
+
+			if(ACE2.isSelected())
+				temp.addACE("Sexual abuse");
+
+			if(ACE3.isSelected())
+				temp.addACE("Emotional abuse");
+
+			if(ACE4.isSelected())
+				temp.addACE("Physical neglect");
+
+			if(ACE5.isSelected())
+				temp.addACE("Emotional neglect");
+
+			if(ACE6.isSelected())
+				temp.addACE("Exposure to domestic violence");
+
+			if(ACE7.isSelected())
+				temp.addACE("Household substance abuse");
+
+
+			if(ACE8.isSelected())
+				temp.addACE("Household mental illness");
+
+			if(ACE9.isSelected())
+				temp.addACE("Parental separation or divorce");
+
+			if(ACE10.isSelected())
+				temp.addACE("Incarcerated household member");
+
+			myData.addPatient(temp);
+
+			try {
+				myData.writeToFile("output.txt");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+
 			IDstring.setText("");
 			Namestring.setText("");
-
-			//ACE1.isSelected();
 
 			ACE1.setSelected(false);
 			ACE2.setSelected(false);

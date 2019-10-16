@@ -19,9 +19,10 @@ public class EditPanel extends JPanel {
 	private JButton Load;
 
 	private AceDataManagerADT myData;
-	private ArrayList ids;
+	private ArrayList<String> ids;
 	private PatientADT temp;
-	
+
+	private boolean test = false;
 
 	private JLabel ID;
 	private JLabel NAME;
@@ -44,11 +45,11 @@ public class EditPanel extends JPanel {
 
 
 
-	public EditPanel(JPanel x, AceDataManagerADT y)
+	public EditPanel(JPanel x, AceDataManagerADT y, ArrayList<String> z)
 	{	
 		home = x;
 		myData= y;
-		ids = myData.getIDs();
+		ids = z;
 		Collections.sort(ids);
 
 
@@ -130,6 +131,7 @@ public class EditPanel extends JPanel {
 
 	}
 
+
 	private class EditPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 			ACE1.setSelected(false);
@@ -154,54 +156,56 @@ public class EditPanel extends JPanel {
 	private class SubmitListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 
-			//ACE1.isSelected();
-			if(ACE1.isSelected())
-				 temp.addACE("Physical abuse");
-			else temp.removeACE("Physical abuse");
-			
-			if(ACE2.isSelected())
-				 temp.addACE("Sexual abuse");
-			else temp.removeACE("Sexual abuse");
-			
-			if(ACE3.isSelected())
-				 temp.addACE("Emotional abuse");
-			else temp.removeACE("Emotional abuse");
-			
-			if(ACE4.isSelected())
-				 temp.addACE("Physical neglect");
-			else temp.removeACE("Physical neglect");
-			
-			if(ACE5.isSelected())
-				 temp.addACE("Emotional neglect");
-			else temp.removeACE("Emotional neglect");
-			
-			if(ACE6.isSelected())
-				 temp.addACE("Exposure to domestic violence");
-			else temp.removeACE("Exposure to domestic violence");
-			
-			if(ACE7.isSelected())
-				 temp.addACE("Household substance abuse");
-			else temp.removeACE("Household substance abuse");
-			
-			if(ACE8.isSelected())
-				 temp.addACE("Household mental illness");
-			else temp.removeACE("Household mental illness");
-			
-			if(ACE9.isSelected())
-				 temp.addACE("Parental separation or divorce");
-			else temp.removeACE("Parental separation or divorce");
-			
-			if(ACE10.isSelected())
-				 temp.addACE("Incarcerated household member");
-			else temp.removeACE("Incarcerated household member");
+			if(test) {
+				if(ACE1.isSelected())
+					temp.addACE("Physical abuse");
+				else temp.removeACE("Physical abuse");
 
-			
-			try {
-				myData.writeToFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				if(ACE2.isSelected())
+					temp.addACE("Sexual abuse");
+				else temp.removeACE("Sexual abuse");
+
+				if(ACE3.isSelected())
+					temp.addACE("Emotional abuse");
+				else temp.removeACE("Emotional abuse");
+
+				if(ACE4.isSelected())
+					temp.addACE("Physical neglect");
+				else temp.removeACE("Physical neglect");
+
+				if(ACE5.isSelected())
+					temp.addACE("Emotional neglect");
+				else temp.removeACE("Emotional neglect");
+
+				if(ACE6.isSelected())
+					temp.addACE("Exposure to domestic violence");
+				else temp.removeACE("Exposure to domestic violence");
+
+				if(ACE7.isSelected())
+					temp.addACE("Household substance abuse");
+				else temp.removeACE("Household substance abuse");
+
+				if(ACE8.isSelected())
+					temp.addACE("Household mental illness");
+				else temp.removeACE("Household mental illness");
+
+				if(ACE9.isSelected())
+					temp.addACE("Parental separation or divorce");
+				else temp.removeACE("Parental separation or divorce");
+
+				if(ACE10.isSelected())
+					temp.addACE("Incarcerated household member");
+				else temp.removeACE("Incarcerated household member");
+
+
+				try {
+					myData.writeToFile("output.txt");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			test = false;
 			IDstring.setSelectedIndex(0);
 			Namestring.setText("");
 			ACE1.setSelected(false);
@@ -222,47 +226,49 @@ public class EditPanel extends JPanel {
 
 	private class LoadListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
+			test = true;
+
 			temp = myData.getPatient(IDstring.getSelectedItem().toString());
 			Namestring.setText(temp.getName());
-			
+
 			if(temp.getACEs().contains("Physical abuse"))
-				 ACE1.setSelected(true);
+				ACE1.setSelected(true);
 			else ACE1.setSelected(false);
-			
+
 			if(temp.getACEs().contains("Sexual abuse"))
-				 ACE2.setSelected(true);
+				ACE2.setSelected(true);
 			else ACE2.setSelected(false);
-			
+
 			if(temp.getACEs().contains("Emotional abuse"))
-				 ACE3.setSelected(true);
+				ACE3.setSelected(true);
 			else ACE3.setSelected(false);
-			
+
 			if(temp.getACEs().contains("Physical neglect"))
-				 ACE4.setSelected(true);
+				ACE4.setSelected(true);
 			else ACE4.setSelected(false);
-			
+
 			if(temp.getACEs().contains("Emotional neglect"))
-				 ACE5.setSelected(true);
+				ACE5.setSelected(true);
 			else ACE5.setSelected(false);
-			
+
 			if(temp.getACEs().contains("Exposure to domestic violence"))
-				 ACE6.setSelected(true);
+				ACE6.setSelected(true);
 			else ACE6.setSelected(false);
-			
+
 			if(temp.getACEs().contains("Household substance abuse"))
-				 ACE7.setSelected(true);
+				ACE7.setSelected(true);
 			else ACE7.setSelected(false);
 
 			if(temp.getACEs().contains("Household mental illness"))
-				 ACE8.setSelected(true);
+				ACE8.setSelected(true);
 			else ACE8.setSelected(false);
-			
+
 			if(temp.getACEs().contains("Parental separation or divorce"))
-				 ACE9.setSelected(true);
+				ACE9.setSelected(true);
 			else ACE9.setSelected(false);
-			
+
 			if(temp.getACEs().contains("Incarcerated household member"))
-				 ACE10.setSelected(true);
+				ACE10.setSelected(true);
 			else ACE10.setSelected(false);
 		}
 	}

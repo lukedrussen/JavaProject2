@@ -2,13 +2,21 @@ package project2PKG;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class MainPanel extends JPanel {
 	private final int WIDTH = 400, HEIGHT = 500;
 
-	AceDataManagerADT myData;
-	
+	private AceDataManagerADT myData;
+	private AceDataManagerADT dummy;
+
+	private PatientADT temp;
+
+	private ArrayList<String> IDS;
+
 	private JPanel controlPanel;
 	private AddPanel addpanel;
 	private ViewPanel viewpanel;
@@ -25,10 +33,11 @@ public class MainPanel extends JPanel {
 	public MainPanel()
 	{
 		super(new BorderLayout());
+		dummy = new AceDataManager<PatientADT>();
 		myData=new AceDataManager<PatientADT>();
 		myData.readFile("output.txt");
-		
-	
+
+
 
 		setPreferredSize (new Dimension(WIDTH, HEIGHT));
 		setBackground (Color.RED);
@@ -52,12 +61,10 @@ public class MainPanel extends JPanel {
 		removePatient.addActionListener(new RemoveListener());
 
 
+		IDS = myData.getIDs();
 
-		addpanel = new AddPanel(controlPanel);
-		editpanel = new EditPanel(controlPanel, myData);
-
-
-
+		addpanel = new AddPanel(controlPanel, myData, IDS);
+		editpanel = new EditPanel(controlPanel, myData, IDS);
 
 
 
@@ -66,10 +73,13 @@ public class MainPanel extends JPanel {
 
 
 
-		add(addpanel, BorderLayout.EAST);
-		addpanel.setVisible(false);
-		add(editpanel, BorderLayout.NORTH);
-		editpanel.setVisible(false);
+
+
+
+		//		add(addpanel, BorderLayout.EAST);
+		//		addpanel.setVisible(false);
+		//		add(editpanel, BorderLayout.NORTH);
+		//		editpanel.setVisible(false);
 
 		add(controlPanel, BorderLayout.WEST);
 		controlPanel.setVisible(true);
@@ -84,6 +94,12 @@ public class MainPanel extends JPanel {
 
 	private class AddPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
+			dummy.readFile("output.txt");
+			myData = dummy;
+			IDS = myData.getIDs();
+			dummy = new AceDataManager<PatientADT>();
+			addpanel = new AddPanel(controlPanel, myData, IDS);
+			add(addpanel, BorderLayout.EAST);
 			controlPanel.setVisible(false);
 			addpanel.setVisible(true);
 		}
@@ -91,20 +107,36 @@ public class MainPanel extends JPanel {
 
 	private class EditPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
+			dummy.readFile("output.txt");
+			myData = dummy;
+			IDS = myData.getIDs();
+			dummy = new AceDataManager<PatientADT>();
+			editpanel = new EditPanel(controlPanel, myData, IDS);
+			add(editpanel, BorderLayout.NORTH);
 			controlPanel.setVisible(false);
-			editpanel.setVisible(true);  
+			editpanel.setVisible(true);
 		}
 	}
 
 	private class RemoveListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-			// do {
+
+			ID = JOptionPane.showInputDialog("Enter a Patient ID:");
+			
+			if(!IDS.contains(ID)) {
+			do {
+				ID = JOptionPane.showInputDialog("No Patient With Matching ID.\nEnter Different ID or Cancel.");
+			} while ( !IDS.contains(ID) && ID != ""); 
+			}
+			myData.removePatient(myData.getPatient(ID));
+			
 			try {
-				ID = JOptionPane.showInputDialog("Enter a Patient ID:");
-			} catch (Exception e) {
-				ID = null;
-			} 
-			//} while (ID != An Existing ID && ID != Blank); 
+				myData.writeToFile("output.txt");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 }

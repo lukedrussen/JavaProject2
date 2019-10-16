@@ -10,5 +10,6 @@ public interface AceDataManagerADT {
 	public void writeToFile (String fn) throws IOException; // write to the file indicated in parameter
 	public void readFile (String fn);//Reads text file
 	public String toString(); //Returns a string representation of the ACE patient and risk factors data manager
-	public ArrayList getIDs();
+	public ArrayList<String> getIDs();
+	public void removePatient(PatientADT p);
 }
