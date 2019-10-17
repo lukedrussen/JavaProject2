@@ -10,7 +10,7 @@ import javax.swing.*;
 //import project2PKG.MainPanel.AddPanelListener;
 
 public class AddPanel extends JPanel {
-	private final int WIDTH = 400, HEIGHT = 500;   
+	private final int WIDTH = 800, HEIGHT = 500;   
 	private JPanel home;
 
 	private JButton showControlPanel;
@@ -59,39 +59,39 @@ public class AddPanel extends JPanel {
 		add(showControlPanel);
 
 		ID = new JLabel("ID:");
-		ID.setBounds(96, 80, 30, 14);
+		ID.setBounds(264, 80, 30, 14);
 		NAME = new JLabel("Name:");
-		NAME.setBounds(74, 108, 38, 14);
+		NAME.setBounds(242, 108, 38, 14);
 		ACEs = new JLabel("ACEs:");
-		ACEs.setBounds(76, 133, 38, 14);
+		ACEs.setBounds(244, 133, 38, 14);
 
 
 		IDstring = new JTextField();
-		IDstring.setBounds(113, 77, 184, 20);
+		IDstring.setBounds(288, 80, 215, 20);
 		Namestring = new JTextField();
-		Namestring.setBounds(113, 105, 184, 20);
+		Namestring.setBounds(288, 108, 215, 20);
 
 
 		ACE1 = new JCheckBox("Physical abuse");
-		ACE1.setBounds(113, 158, 215, 23);
+		ACE1.setBounds(288, 161, 215, 23);
 		ACE2 = new JCheckBox("Sexual abuse");
-		ACE2.setBounds(113, 184, 215, 23);
+		ACE2.setBounds(288, 187, 215, 23);
 		ACE3 = new JCheckBox("Emotional abuse");
-		ACE3.setBounds(113, 210, 215, 23);
+		ACE3.setBounds(288, 213, 215, 23);
 		ACE4 = new JCheckBox("Physical neglect");
-		ACE4.setBounds(113, 236, 215, 23);
+		ACE4.setBounds(288, 239, 215, 23);
 		ACE5 = new JCheckBox("Emotional neglect");
-		ACE5.setBounds(113, 262, 215, 23);
+		ACE5.setBounds(288, 265, 215, 23);
 		ACE6 = new JCheckBox("Exposure to domestic violence");
-		ACE6.setBounds(113, 288, 215, 23);
+		ACE6.setBounds(288, 291, 215, 23);
 		ACE7 = new JCheckBox("Household substance abuse");
-		ACE7.setBounds(113, 314, 215, 23);
+		ACE7.setBounds(288, 317, 215, 23);
 		ACE8 = new JCheckBox("Household mental illness");
-		ACE8.setBounds(113, 340, 215, 23);
+		ACE8.setBounds(288, 343, 215, 23);
 		ACE9 = new JCheckBox("Parental separation or divorce");
-		ACE9.setBounds(113, 366, 215, 23);
+		ACE9.setBounds(288, 369, 215, 23);
 		ACE10 = new JCheckBox("Incarcerated household member");
-		ACE10.setBounds(113, 392, 215, 23);
+		ACE10.setBounds(288, 395, 215, 23);
 
 
 
@@ -111,7 +111,7 @@ public class AddPanel extends JPanel {
 		add(ACE9);
 
 		Submit = new JButton("Submit");
-		Submit.setBounds(301, 467, 89, 23);
+		Submit.setBounds(701, 467, 89, 23);
 		Submit.addActionListener(new SubmitListener());
 		add(Submit);
 		add(ACE10);
@@ -123,19 +123,19 @@ public class AddPanel extends JPanel {
 
 	private class AddPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-			ACE1.setSelected(false);
-			ACE2.setSelected(false);
-			ACE3.setSelected(false);
-			ACE4.setSelected(false);
-			ACE5.setSelected(false);
-			ACE6.setSelected(false);
-			ACE7.setSelected(false);
-			ACE8.setSelected(false);
-			ACE9.setSelected(false);
-			ACE10.setSelected(false);
-
-			IDstring.setText("");
-			Namestring.setText("");
+//			ACE1.setSelected(false);
+//			ACE2.setSelected(false);
+//			ACE3.setSelected(false);
+//			ACE4.setSelected(false);
+//			ACE5.setSelected(false);
+//			ACE6.setSelected(false);
+//			ACE7.setSelected(false);
+//			ACE8.setSelected(false);
+//			ACE9.setSelected(false);
+//			ACE10.setSelected(false);
+//
+//			IDstring.setText("");
+//			Namestring.setText("");
 
 
 			setVisible(false);
@@ -216,19 +216,19 @@ public class AddPanel extends JPanel {
 			}
 
 
-			IDstring.setText("");
-			Namestring.setText("");
-
-			ACE1.setSelected(false);
-			ACE2.setSelected(false);
-			ACE3.setSelected(false);
-			ACE4.setSelected(false);
-			ACE5.setSelected(false);
-			ACE6.setSelected(false);
-			ACE7.setSelected(false);
-			ACE8.setSelected(false);
-			ACE9.setSelected(false);
-			ACE10.setSelected(false);
+//			IDstring.setText("");
+//			Namestring.setText("");
+//
+//			ACE1.setSelected(false);
+//			ACE2.setSelected(false);
+//			ACE3.setSelected(false);
+//			ACE4.setSelected(false);
+//			ACE5.setSelected(false);
+//			ACE6.setSelected(false);
+//			ACE7.setSelected(false);
+//			ACE8.setSelected(false);
+//			ACE9.setSelected(false);
+//			ACE10.setSelected(false);
 
 
 			setVisible(false);

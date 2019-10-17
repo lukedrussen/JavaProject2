@@ -39,45 +39,47 @@ public class AceDataManager<T> implements AceDataManagerADT {
 
 
 	public ArrayList<String> getRiskFactors(ArrayList<String> aces) {
+		Risks = new ArrayList<String>();
+		
 		if(aces.contains("Physical abuse"))
 		{
-			Risks.add("Potential risk of substance abuse and/or aggressive behavior from Physical abuse");
+			Risks.add("Potential risk of substance abuse and/or aggressive behavior from Physical abuse.");
 		}
 		if(aces.contains("Sexual abuse"))
 		{
-			Risks.add("Potential risk of personality disorder, mood disorder and/or anxiety disorder from Sexual abuse");
+			Risks.add("Potential risk of personality disorder, mood disorder and/or anxiety disorder from Sexual abuse.");
 		}
 		if(aces.contains("Emotional abuse"))
 		{
-			Risks.add("Potential risk of substance abuse, mood disorder and/or anxiety disorder from Emotional abuse");
+			Risks.add("Potential risk of substance abuse, mood disorder and/or anxiety disorder from Emotional abuse.");
 		}
 		if(aces.contains("Physical neglect"))
 		{
-			Risks.add("Potential risk of substance abuse and/or chronic diseases from Physical neglect");
+			Risks.add("Potential risk of substance abuse and/or chronic diseases from Physical neglect.");
 		}
 		if(aces.contains("Emotional neglect"))
 		{
-			Risks.add("Potential risk of substance abuse, mood disorder and/or anxiety disorder from Emotional neglect");
+			Risks.add("Potential risk of substance abuse, mood disorder and/or anxiety disorder from Emotional neglect.");
 		}
 		if(aces.contains("Exposure to domestic violence"))
 		{
-			Risks.add("Potential risk of substance abuse, mood disorder, anxiety disorder, and/or aggressive behavior from Exposure to domestic violence");
+			Risks.add("Potential risk of substance abuse, mood disorder, anxiety disorder, and/or aggressive behavior from Exposure to domestic violence.");
 		}
 		if(aces.contains("Household substance abuse"))
 		{
-			Risks.add("Potential risk of chronic diseases, substance abuse and/or mood disorder from Household substance abuse exposure");
+			Risks.add("Potential risk of chronic diseases, substance abuse and/or mood disorder from Household substance abuse exposure.");
 		}
 		if(aces.contains("Household mental illness"))
 		{
-			Risks.add("Potential risk of mood disorder and/or chronic diseases from Household mental illness");
+			Risks.add("Potential risk of mood disorder and/or chronic diseases from Household mental illness.");
 		}
-		if(aces.contains("Parental separation"))
+		if(aces.contains("Parental separation or divorce"))
 		{
-			Risks.add("Potential risk of chronic diseases, substance abuse, mood disorder and/or anxiety disorder from Parental separation");
+			Risks.add("Potential risk of chronic diseases, substance abuse, mood disorder and/or anxiety disorder from Parental separation.");
 		}
 		if(aces.contains("Incarcerated household member"))
 		{
-			Risks.add("Potential risk of substance abuse, mood disorder, and/or chronic diseases from Incarcerated household member");
+			Risks.add("Potential risk of substance abuse, mood disorder, and/or chronic diseases from Incarcerated household member.");
 		}
 		//Judges severity of symptoms based on quantity of aces
 		if(Risks.size() < 2)

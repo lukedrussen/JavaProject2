@@ -11,7 +11,7 @@ import javax.swing.*;
 //import project2PKG.MainPanel.AddPanelListener;
 
 public class EditPanel extends JPanel {
-	private final int WIDTH = 400, HEIGHT = 500;   
+	private final int WIDTH = 800, HEIGHT = 500;   
 	private JPanel home;
 
 	private JButton showControlPanel;
@@ -20,6 +20,8 @@ public class EditPanel extends JPanel {
 
 	private AceDataManagerADT myData;
 	private ArrayList<String> ids;
+	private ArrayList<String> tempRF;
+	private String RFs;
 	private PatientADT temp;
 
 	private boolean test = false;
@@ -27,10 +29,13 @@ public class EditPanel extends JPanel {
 	private JLabel ID;
 	private JLabel NAME;
 	private JLabel ACEs;
+	private JLabel RISKS;
 
-	private JComboBox IDstring;
+	private JComboBox<String> IDstring;
 	private JTextField Namestring;
-
+	private JTextPane RiskFactors;
+	private JScrollPane jsp;
+	
 	private JCheckBox ACE1;
 	private JCheckBox ACE2;
 	private JCheckBox ACE3;
@@ -51,7 +56,7 @@ public class EditPanel extends JPanel {
 		myData= y;
 		ids = z;
 		Collections.sort(ids);
-
+		tempRF= new ArrayList<String>();
 
 		//setVisible(true);
 
@@ -72,13 +77,19 @@ public class EditPanel extends JPanel {
 		NAME.setBounds(71, 109, 38, 14);
 		ACEs = new JLabel("ACEs:");
 		ACEs.setBounds(71, 137, 38, 14);
+		RISKS = new JLabel("Risk Factors");
+		RISKS.setBounds(555, 52, 106, 14);
 
-
-		IDstring = new JComboBox();
+		IDstring = new JComboBox<String>();
 		IDstring.setModel(new DefaultComboBoxModel(ids.toArray()));
 		IDstring.setBounds(113, 77, 184, 20);
 		Namestring = new JTextField();
 		Namestring.setBounds(113, 106, 184, 20);
+		
+		RiskFactors = new JTextPane();
+		RiskFactors.setBounds(420, 76, 334, 339);
+		jsp = new JScrollPane(RiskFactors);
+		jsp.setBounds(420, 76, 334, 339);
 
 
 		ACE1 = new JCheckBox("Physical abuse");
@@ -103,7 +114,9 @@ public class EditPanel extends JPanel {
 		ACE10.setBounds(113, 392, 215, 23);
 
 
-
+		add(RISKS);
+		//add(RiskFactors);
+		add(jsp);
 		add(ID);
 		add(IDstring);
 		add(NAME);
@@ -121,7 +134,7 @@ public class EditPanel extends JPanel {
 		add(ACE10);
 
 		Submit = new JButton("Submit");
-		Submit.setBounds(301, 467, 89, 23);
+		Submit.setBounds(701, 467, 89, 23);
 		Submit.addActionListener(new SubmitListener());
 		add(Submit);
 
@@ -134,19 +147,20 @@ public class EditPanel extends JPanel {
 
 	private class EditPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-			ACE1.setSelected(false);
-			ACE2.setSelected(false);
-			ACE3.setSelected(false);
-			ACE4.setSelected(false);
-			ACE5.setSelected(false);
-			ACE6.setSelected(false);
-			ACE7.setSelected(false);
-			ACE8.setSelected(false);
-			ACE9.setSelected(false);
-			ACE10.setSelected(false);
-
-			IDstring.setSelectedIndex(0);
-			Namestring.setText("");
+//			ACE1.setSelected(false);
+//			ACE2.setSelected(false);
+//			ACE3.setSelected(false);
+//			ACE4.setSelected(false);
+//			ACE5.setSelected(false);
+//			ACE6.setSelected(false);
+//			ACE7.setSelected(false);
+//			ACE8.setSelected(false);
+//			ACE9.setSelected(false);
+//			ACE10.setSelected(false);
+//
+//			IDstring.setSelectedIndex(0);
+//			Namestring.setText("");
+			
 
 			setVisible(false);
 			home.setVisible(true);
@@ -208,6 +222,7 @@ public class EditPanel extends JPanel {
 			test = false;
 			IDstring.setSelectedIndex(0);
 			Namestring.setText("");
+			RiskFactors.setText("");
 			ACE1.setSelected(false);
 			ACE2.setSelected(false);
 			ACE3.setSelected(false);
@@ -219,8 +234,8 @@ public class EditPanel extends JPanel {
 			ACE9.setSelected(false);
 			ACE10.setSelected(false);
 
-			setVisible(false);
-			home.setVisible(true);
+//			setVisible(false);
+//			home.setVisible(true);
 		}
 	}
 
@@ -231,6 +246,10 @@ public class EditPanel extends JPanel {
 			temp = myData.getPatient(IDstring.getSelectedItem().toString());
 			Namestring.setText(temp.getName());
 
+			
+
+			
+			
 			if(temp.getACEs().contains("Physical abuse"))
 				ACE1.setSelected(true);
 			else ACE1.setSelected(false);
@@ -270,9 +289,21 @@ public class EditPanel extends JPanel {
 			if(temp.getACEs().contains("Incarcerated household member"))
 				ACE10.setSelected(true);
 			else ACE10.setSelected(false);
+			
+			tempRF= temp.getACEs();
+			
+			tempRF= myData.getRiskFactors(tempRF);
+			
+			RFs=null;
+			
+			RFs=tempRF.toString();
+			
+
+			
+
+
+			RiskFactors.setText(RFs.replace("[", "").replace("]", "").replace("., ", "\n\n"));
 		}
 	}
-
-
 }
 

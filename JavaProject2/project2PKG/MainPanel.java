@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class MainPanel extends JPanel {
-	private final int WIDTH = 400, HEIGHT = 500;
+	private final int WIDTH = 800, HEIGHT = 500;
 
 	private AceDataManagerADT myData;
 	private AceDataManagerADT dummy;
@@ -49,15 +49,15 @@ public class MainPanel extends JPanel {
 
 
 		showAddPanel = new JButton("Add Patient");
-		showAddPanel.setBounds(133, 128, 126, 23);
+		showAddPanel.setBounds(326, 129, 148, 23);
 		showAddPanel.addActionListener(new AddPanelListener());
 
-		showEditPanel = new JButton("Edit Patient");
-		showEditPanel.setBounds(133, 161, 126, 23);
+		showEditPanel = new JButton("View/Edit Patient");
+		showEditPanel.setBounds(326, 162, 148, 23);
 		showEditPanel.addActionListener(new EditPanelListener());
 
 		removePatient = new JButton("Remove Patient");
-		removePatient.setBounds(133, 194, 126, 23);
+		removePatient.setBounds(326, 195, 148, 23);
 		removePatient.addActionListener(new RemoveListener());
 
 
