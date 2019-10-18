@@ -1,9 +1,7 @@
 package project2PKG;
 
-import java.awt.BorderLayout;
-
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class MainFrame {
 
@@ -12,7 +10,9 @@ public class MainFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 500);
 
-
+		ImageIcon icon = new ImageIcon("DR.png");
+		frame.setIconImage(icon.getImage());
+		
 		frame.getContentPane().add(new MainPanel());
 
 		frame.pack();
