@@ -19,7 +19,6 @@ public class MainPanel extends JPanel {
 
 	private JPanel controlPanel;
 	private AddPanel addpanel;
-	private ViewPanel viewpanel;
 	private EditPanel editpanel;
 
 	private String ID;
