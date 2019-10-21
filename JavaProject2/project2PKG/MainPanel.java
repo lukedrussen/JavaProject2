@@ -1,3 +1,6 @@
+//Luke Russenberger
+
+
 package project2PKG;
 
 import java.awt.*;
@@ -24,7 +27,6 @@ public class MainPanel extends JPanel {
 	private String ID;
 
 	private JButton showAddPanel;
-	private JButton showViewPanel;
 	private JButton showEditPanel;
 	private JButton removePatient;
 
@@ -62,8 +64,8 @@ public class MainPanel extends JPanel {
 
 		IDS = myData.getIDs();
 
-		addpanel = new AddPanel(controlPanel, myData, IDS);
-		editpanel = new EditPanel(controlPanel, myData, IDS);
+		addpanel = new AddPanel(controlPanel, myData);
+		editpanel = new EditPanel(controlPanel, myData);
 
 
 
@@ -75,10 +77,10 @@ public class MainPanel extends JPanel {
 
 
 
-		//		add(addpanel, BorderLayout.EAST);
-		//		addpanel.setVisible(false);
-		//		add(editpanel, BorderLayout.NORTH);
-		//		editpanel.setVisible(false);
+				add(addpanel, BorderLayout.EAST);
+				addpanel.setVisible(false);
+				add(editpanel, BorderLayout.NORTH);
+				editpanel.setVisible(false);
 
 		add(controlPanel, BorderLayout.WEST);
 		controlPanel.setVisible(true);
@@ -93,11 +95,11 @@ public class MainPanel extends JPanel {
 
 	private class AddPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-			dummy.readFile("output.txt");
-			myData = dummy;
-			IDS = myData.getIDs();
-			dummy = new AceDataManager<PatientADT>();
-			addpanel = new AddPanel(controlPanel, myData, IDS);
+//			dummy.readFile("output.txt");
+//			myData = dummy;
+//			IDS = myData.getIDs();
+//			dummy = new AceDataManager<PatientADT>();
+			addpanel = new AddPanel(controlPanel, myData);
 			add(addpanel, BorderLayout.EAST);
 			controlPanel.setVisible(false);
 			addpanel.setVisible(true);
@@ -106,11 +108,11 @@ public class MainPanel extends JPanel {
 
 	private class EditPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-			dummy.readFile("output.txt");
-			myData = dummy;
-			IDS = myData.getIDs();
-			dummy = new AceDataManager<PatientADT>();
-			editpanel = new EditPanel(controlPanel, myData, IDS);
+//			dummy.readFile("output.txt");
+//			myData = dummy;
+//			IDS = myData.getIDs();
+//			dummy = new AceDataManager<PatientADT>();
+			editpanel = new EditPanel(controlPanel, myData);
 			add(editpanel, BorderLayout.NORTH);
 			controlPanel.setVisible(false);
 			editpanel.setVisible(true);
@@ -119,7 +121,9 @@ public class MainPanel extends JPanel {
 
 	private class RemoveListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-
+			IDS = myData.getIDs();
+			System.out.println(IDS);
+			
 			ID = JOptionPane.showInputDialog("Enter a Patient ID:");
 			
 			if(!IDS.contains(ID) && ID != null) {
@@ -137,6 +141,18 @@ public class MainPanel extends JPanel {
 			}
 
 		}
+	}
+
+	public void doClose() {
+		// TODO Auto-generated method stub
+		System.out.println("myData:");
+		System.out.println(myData);
+		try {
+		myData.writeToFile("output.txt");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 }
 

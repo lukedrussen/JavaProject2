@@ -110,6 +110,7 @@ public class AceDataManager<T> implements AceDataManagerADT {
 	}
 	
 	public ArrayList<String> getIDs() {
+		IDS = new ArrayList<String>();
 		for(PatientADT s: Patients) {
 			IDS.add(s.getId());
 		}

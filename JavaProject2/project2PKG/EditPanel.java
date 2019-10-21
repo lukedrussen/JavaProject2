@@ -50,11 +50,12 @@ public class EditPanel extends JPanel {
 
 
 
-	public EditPanel(JPanel x, AceDataManagerADT y, ArrayList<String> z)
+	public EditPanel(JPanel x, AceDataManagerADT y)
 	{	
 		home = x;
 		myData= y;
-		ids = z;
+		ids=null;
+		ids = myData.getIDs();
 		Collections.sort(ids);
 		tempRF= new ArrayList<String>();
 
@@ -212,13 +213,14 @@ public class EditPanel extends JPanel {
 				else temp.removeACE("Incarcerated household member");
 
 
-				try {
-					myData.writeToFile("output.txt");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+//				try {
+//					myData.writeToFile("output.txt");
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 				}
-			}
+
 			test = false;
 			IDstring.setSelectedIndex(0);
 			Namestring.setText("");

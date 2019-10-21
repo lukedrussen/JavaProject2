@@ -44,13 +44,13 @@ public class AddPanel extends JPanel {
 
 
 
-	public AddPanel(JPanel x, AceDataManagerADT y, ArrayList<String> z)
+	public AddPanel(JPanel x, AceDataManagerADT y)
 	{	
 		home = x;
 		myData = y;
-		ids = z;
+		ids = myData.getIDs();
 		temp = new Patient<String>();
-//		setVisible(true);
+		//setVisible(true);
 
 		showControlPanel = new JButton("Back");
 		showControlPanel.setBounds(10, 10, 83, 23);
@@ -208,12 +208,12 @@ public class AddPanel extends JPanel {
 
 			myData.addPatient(temp);
 
-			try {
-				myData.writeToFile("output.txt");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			try {
+//				myData.writeToFile("output.txt");
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 
 
 //			IDstring.setText("");
