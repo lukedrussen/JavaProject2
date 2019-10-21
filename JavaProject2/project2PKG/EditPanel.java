@@ -35,7 +35,7 @@ public class EditPanel extends JPanel {
 	private JTextField Namestring;
 	private JTextPane RiskFactors;
 	private JScrollPane jsp;
-	
+
 	private JCheckBox ACE1;
 	private JCheckBox ACE2;
 	private JCheckBox ACE3;
@@ -86,7 +86,7 @@ public class EditPanel extends JPanel {
 		IDstring.setBounds(113, 77, 184, 20);
 		Namestring = new JTextField();
 		Namestring.setBounds(113, 106, 184, 20);
-		
+
 		RiskFactors = new JTextPane();
 		RiskFactors.setBounds(420, 76, 334, 339);
 		jsp = new JScrollPane(RiskFactors);
@@ -116,7 +116,6 @@ public class EditPanel extends JPanel {
 
 
 		add(RISKS);
-		//add(RiskFactors);
 		add(jsp);
 		add(ID);
 		add(IDstring);
@@ -148,21 +147,6 @@ public class EditPanel extends JPanel {
 
 	private class EditPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-//			ACE1.setSelected(false);
-//			ACE2.setSelected(false);
-//			ACE3.setSelected(false);
-//			ACE4.setSelected(false);
-//			ACE5.setSelected(false);
-//			ACE6.setSelected(false);
-//			ACE7.setSelected(false);
-//			ACE8.setSelected(false);
-//			ACE9.setSelected(false);
-//			ACE10.setSelected(false);
-//
-//			IDstring.setSelectedIndex(0);
-//			Namestring.setText("");
-			
-
 			setVisible(false);
 			home.setVisible(true);
 		}
@@ -211,15 +195,7 @@ public class EditPanel extends JPanel {
 				if(ACE10.isSelected())
 					temp.addACE("Incarcerated household member");
 				else temp.removeACE("Incarcerated household member");
-
-
-//				try {
-//					myData.writeToFile("output.txt");
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-				}
+			}
 
 			test = false;
 			IDstring.setSelectedIndex(0);
@@ -236,8 +212,8 @@ public class EditPanel extends JPanel {
 			ACE9.setSelected(false);
 			ACE10.setSelected(false);
 
-//			setVisible(false);
-//			home.setVisible(true);
+			//			setVisible(false);
+			//			home.setVisible(true);
 		}
 	}
 
@@ -248,10 +224,10 @@ public class EditPanel extends JPanel {
 			temp = myData.getPatient(IDstring.getSelectedItem().toString());
 			Namestring.setText(temp.getName());
 
-			
 
-			
-			
+
+
+
 			if(temp.getACEs().contains("Physical abuse"))
 				ACE1.setSelected(true);
 			else ACE1.setSelected(false);
@@ -291,17 +267,17 @@ public class EditPanel extends JPanel {
 			if(temp.getACEs().contains("Incarcerated household member"))
 				ACE10.setSelected(true);
 			else ACE10.setSelected(false);
-			
-			tempRF= temp.getACEs();
-			
-			tempRF= myData.getRiskFactors(tempRF);
-			
-			RFs=null;
-			
-			RFs=tempRF.toString();
-			
 
-			
+			tempRF= temp.getACEs();
+
+			tempRF= myData.getRiskFactors(tempRF);
+
+			RFs=null;
+
+			RFs=tempRF.toString();
+
+
+
 
 
 			RiskFactors.setText(RFs.replace("[", "").replace("]", "").replace("., ", "\n\n"));

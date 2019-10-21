@@ -66,9 +66,9 @@ public class AddPanel extends JPanel {
 		ACEs.setBounds(244, 133, 38, 14);
 
 
-		IDstring = new JTextField();
+		IDstring = new JTextField("");
 		IDstring.setBounds(288, 80, 215, 20);
-		Namestring = new JTextField();
+		Namestring = new JTextField("");
 		Namestring.setBounds(288, 108, 215, 20);
 
 
@@ -123,21 +123,6 @@ public class AddPanel extends JPanel {
 
 	private class AddPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-//			ACE1.setSelected(false);
-//			ACE2.setSelected(false);
-//			ACE3.setSelected(false);
-//			ACE4.setSelected(false);
-//			ACE5.setSelected(false);
-//			ACE6.setSelected(false);
-//			ACE7.setSelected(false);
-//			ACE8.setSelected(false);
-//			ACE9.setSelected(false);
-//			ACE10.setSelected(false);
-//
-//			IDstring.setText("");
-//			Namestring.setText("");
-
-
 			setVisible(false);
 			home.setVisible(true);
 		}
@@ -145,16 +130,13 @@ public class AddPanel extends JPanel {
 
 	private class SubmitListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-			//addPatient
-
-
-			if(Namestring.getText() == "")
+			if(Namestring.getText().contentEquals(""))
 			{
 				do {
 
 					tempName = JOptionPane.showInputDialog("You did not enter a patient name. Please enter a Name.");
-					if(Namestring.getText() != "")
-						temp.setId(tempID);
+					if(Namestring.getText().contentEquals(""))
+						temp.setName(tempName);
 
 				} while (Namestring.getText() == ""); 
 			}else 
@@ -207,28 +189,6 @@ public class AddPanel extends JPanel {
 				temp.addACE("Incarcerated household member");
 
 			myData.addPatient(temp);
-
-//			try {
-//				myData.writeToFile("output.txt");
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-
-
-//			IDstring.setText("");
-//			Namestring.setText("");
-//
-//			ACE1.setSelected(false);
-//			ACE2.setSelected(false);
-//			ACE3.setSelected(false);
-//			ACE4.setSelected(false);
-//			ACE5.setSelected(false);
-//			ACE6.setSelected(false);
-//			ACE7.setSelected(false);
-//			ACE8.setSelected(false);
-//			ACE9.setSelected(false);
-//			ACE10.setSelected(false);
 
 
 			setVisible(false);

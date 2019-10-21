@@ -9,15 +9,17 @@ import javax.swing.JFrame;
 public class MainFrame {
 
 	public static void main(String[] args) {
-		MainPanel panel = new MainPanel();
+		AceDataManagerADT myData = new AceDataManager<String>();
+		MainPanel panel = new MainPanel(myData);
 		JFrame frame = new JFrame("ACE Data Manager");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 500);
 
+
 		ImageIcon icon = new ImageIcon("DR.png");
 		frame.setIconImage(icon.getImage());
-		
-		frame.getContentPane().add(new MainPanel());
+
+		frame.getContentPane().add(panel);
 
 		frame.pack();
 		frame.setVisible(true);
@@ -27,7 +29,7 @@ public class MainFrame {
 				System.exit(0);
 			}
 		});
-		
+
 	}
 
 }

@@ -14,9 +14,6 @@ public class MainPanel extends JPanel {
 	private final int WIDTH = 800, HEIGHT = 500;
 
 	private AceDataManagerADT myData;
-	private AceDataManagerADT dummy;
-
-	private PatientADT temp;
 
 	private ArrayList<String> IDS;
 
@@ -31,11 +28,10 @@ public class MainPanel extends JPanel {
 	private JButton removePatient;
 
 
-	public MainPanel()
+	public MainPanel(AceDataManagerADT x)
 	{
 		super(new BorderLayout());
-		dummy = new AceDataManager<PatientADT>();
-		myData=new AceDataManager<PatientADT>();
+		myData=x;
 		myData.readFile("output.txt");
 
 
@@ -77,10 +73,10 @@ public class MainPanel extends JPanel {
 
 
 
-				add(addpanel, BorderLayout.EAST);
-				addpanel.setVisible(false);
-				add(editpanel, BorderLayout.NORTH);
-				editpanel.setVisible(false);
+		add(addpanel, BorderLayout.EAST);
+		addpanel.setVisible(false);
+		add(editpanel, BorderLayout.NORTH);
+		editpanel.setVisible(false);
 
 		add(controlPanel, BorderLayout.WEST);
 		controlPanel.setVisible(true);
@@ -95,10 +91,7 @@ public class MainPanel extends JPanel {
 
 	private class AddPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-//			dummy.readFile("output.txt");
-//			myData = dummy;
-//			IDS = myData.getIDs();
-//			dummy = new AceDataManager<PatientADT>();
+
 			addpanel = new AddPanel(controlPanel, myData);
 			add(addpanel, BorderLayout.EAST);
 			controlPanel.setVisible(false);
@@ -108,10 +101,6 @@ public class MainPanel extends JPanel {
 
 	private class EditPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
-//			dummy.readFile("output.txt");
-//			myData = dummy;
-//			IDS = myData.getIDs();
-//			dummy = new AceDataManager<PatientADT>();
 			editpanel = new EditPanel(controlPanel, myData);
 			add(editpanel, BorderLayout.NORTH);
 			controlPanel.setVisible(false);
@@ -122,37 +111,26 @@ public class MainPanel extends JPanel {
 	private class RemoveListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 			IDS = myData.getIDs();
-			System.out.println(IDS);
-			
+
 			ID = JOptionPane.showInputDialog("Enter a Patient ID:");
-			
+
 			if(!IDS.contains(ID) && ID != null) {
-			do {
-				ID = JOptionPane.showInputDialog("No Patient With Matching ID.\nEnter Different ID or Cancel.");
-			} while ( !IDS.contains(ID) && ID != null); 
+				do {
+					ID = JOptionPane.showInputDialog("No Patient With Matching ID.\nEnter Different ID or Cancel.");
+				} while ( !IDS.contains(ID) && ID != null); 
 			}
 			myData.removePatient(myData.getPatient(ID));
-			
-			try {
-				myData.writeToFile("output.txt");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
 		}
 	}
 
 	public void doClose() {
 		// TODO Auto-generated method stub
-		System.out.println("myData:");
-		System.out.println(myData);
 		try {
-		myData.writeToFile("output.txt");
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+			myData.writeToFile("output.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 
