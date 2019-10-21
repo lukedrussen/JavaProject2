@@ -1,4 +1,5 @@
 //Luke Russenberger
+//CSCI 3381
 
 
 package project2PKG;
@@ -27,7 +28,7 @@ public class MainPanel extends JPanel {
 	private JButton showEditPanel;
 	private JButton removePatient;
 
-
+	//Main screen
 	public MainPanel(AceDataManagerADT x)
 	{
 		super(new BorderLayout());
@@ -63,16 +64,6 @@ public class MainPanel extends JPanel {
 		addpanel = new AddPanel(controlPanel, myData);
 		editpanel = new EditPanel(controlPanel, myData);
 
-
-
-
-
-
-
-
-
-
-
 		add(addpanel, BorderLayout.EAST);
 		addpanel.setVisible(false);
 		add(editpanel, BorderLayout.NORTH);
@@ -88,7 +79,7 @@ public class MainPanel extends JPanel {
 		controlPanel.add(removePatient);
 	}
 
-
+	//hides this panel and opens addPanel
 	private class AddPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 
@@ -98,7 +89,8 @@ public class MainPanel extends JPanel {
 			addpanel.setVisible(true);
 		}
 	}
-
+	
+	//hides this screen and opens editPanel
 	private class EditPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 			editpanel = new EditPanel(controlPanel, myData);
@@ -108,6 +100,7 @@ public class MainPanel extends JPanel {
 		}
 	}
 
+	//Opens a pop up screen requesting an id for a patient to be removed
 	private class RemoveListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 			IDS = myData.getIDs();
@@ -123,6 +116,7 @@ public class MainPanel extends JPanel {
 		}
 	}
 
+	//Writes myData to the file when the windo is closed
 	public void doClose() {
 		// TODO Auto-generated method stub
 		try {

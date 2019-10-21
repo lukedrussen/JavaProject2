@@ -1,3 +1,5 @@
+//Luke Russenberger
+//CSCI 3381
 package project2PKG;
 
 import java.awt.event.WindowAdapter;

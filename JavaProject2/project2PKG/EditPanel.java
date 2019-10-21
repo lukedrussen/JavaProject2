@@ -1,3 +1,5 @@
+//Luke Russenberger
+//CSCI 3381
 package project2PKG;
 
 import java.awt.*;
@@ -10,14 +12,17 @@ import javax.swing.*;
 
 //import project2PKG.MainPanel.AddPanelListener;
 
+//Panel used to edit and view existing patients
 public class EditPanel extends JPanel {
 	private final int WIDTH = 800, HEIGHT = 500;   
 	private JPanel home;
 
+	//Buttons
 	private JButton showControlPanel;
 	private JButton Submit;
 	private JButton Load;
 
+	//Project 1 stuff
 	private AceDataManagerADT myData;
 	private ArrayList<String> ids;
 	private ArrayList<String> tempRF;
@@ -26,16 +31,19 @@ public class EditPanel extends JPanel {
 
 	private boolean test = false;
 
+	//Labels
 	private JLabel ID;
 	private JLabel NAME;
 	private JLabel ACEs;
 	private JLabel RISKS;
 
+	//Stuff
 	private JComboBox<String> IDstring;
 	private JTextField Namestring;
 	private JTextPane RiskFactors;
 	private JScrollPane jsp;
 
+	//Check boxes for aces
 	private JCheckBox ACE1;
 	private JCheckBox ACE2;
 	private JCheckBox ACE3;
@@ -49,13 +57,14 @@ public class EditPanel extends JPanel {
 
 
 
-
+	//Does the stuff
 	public EditPanel(JPanel x, AceDataManagerADT y)
 	{	
 		home = x;
 		myData= y;
 		ids=null;
 		ids = myData.getIDs();
+		//puts the IDs in order
 		Collections.sort(ids);
 		tempRF= new ArrayList<String>();
 
@@ -82,6 +91,7 @@ public class EditPanel extends JPanel {
 		RISKS.setBounds(555, 52, 106, 14);
 
 		IDstring = new JComboBox<String>();
+		//Sets the combo box to contain a list of all existing IDs
 		IDstring.setModel(new DefaultComboBoxModel(ids.toArray()));
 		IDstring.setBounds(113, 77, 184, 20);
 		Namestring = new JTextField();
@@ -144,14 +154,15 @@ public class EditPanel extends JPanel {
 
 	}
 
-
+	//Goes back to home screen
 	private class EditPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 			setVisible(false);
 			home.setVisible(true);
 		}
 	}
-
+	
+	//Saves changes to patients
 	private class SubmitListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 
@@ -217,6 +228,7 @@ public class EditPanel extends JPanel {
 		}
 	}
 
+	//Loads all info for the patient with the selected ID
 	private class LoadListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 			test = true;

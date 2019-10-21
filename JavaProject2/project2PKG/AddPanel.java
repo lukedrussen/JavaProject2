@@ -1,3 +1,6 @@
+//Luke Russenberger
+//CSCI 3381
+
 package project2PKG;
 
 import java.awt.*;
@@ -7,29 +10,35 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-//import project2PKG.MainPanel.AddPanelListener;
+//Panel Used to add patients
 
 public class AddPanel extends JPanel {
 	private final int WIDTH = 800, HEIGHT = 500;   
+	
+	//MainPanel
 	private JPanel home;
 
+	//Buttons
 	private JButton showControlPanel;
 	private JButton Submit;
 
+	//Labels
 	private JLabel ID;
 	private JLabel NAME;
 	private JLabel ACEs;
 
+	//Project 1 Variables
 	private AceDataManagerADT myData;
 	private ArrayList<String> ids;
 	private PatientADT temp;
-
 	private String tempID;
 	private String tempName;
 
+	//Text Fields
 	private JTextField IDstring;
 	private JTextField Namestring;
 
+	//Check Boxes for all ACEs
 	private JCheckBox ACE1;
 	private JCheckBox ACE2;
 	private JCheckBox ACE3;
@@ -43,7 +52,7 @@ public class AddPanel extends JPanel {
 
 
 
-
+	//Does The Stuff
 	public AddPanel(JPanel x, AceDataManagerADT y)
 	{	
 		home = x;
@@ -120,14 +129,16 @@ public class AddPanel extends JPanel {
 		setBackground (Color.LIGHT_GRAY);
 	}
 
-
+	
+	//Goes back to the home screen
 	private class AddPanelListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 			setVisible(false);
 			home.setVisible(true);
 		}
 	}
-
+	
+	//Checks the contents of all fields and creates a new patient when submit button clicked
 	private class SubmitListener implements ActionListener {
 		public void actionPerformed (ActionEvent event) {
 			if(Namestring.getText().contentEquals(""))
